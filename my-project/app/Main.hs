@@ -17,3 +17,4 @@ main = do
   print $ isEmptyHH (makeHeapFromArray [1,23,12,34])
   print $ (topH (emptyHe) ::Maybe Int)
   print $ topH $ makeHeapFromArray [1.3,2.4,1.2]
+  --print EmptyH 

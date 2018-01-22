@@ -74,3 +74,15 @@ Building library for regex-tdfa-1.2.2..
 [11 of 23] Compiling Text.Regex.TDFA.NewDFA.Engine_NC ( Text\Regex\TDFA\NewDFA\Engine_NC.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\NewDFA\Engine_NC.o )
 [12 of 23] Compiling Text.Regex.TDFA.NewDFA.Engine_FA ( Text\Regex\TDFA\NewDFA\Engine_FA.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\NewDFA\Engine_FA.o )
 [13 of 23] Compiling Text.Regex.TDFA.NewDFA.Engine ( Text\Regex\TDFA\NewDFA\Engine.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\NewDFA\Engine.o )
+[14 of 23] Compiling Text.Regex.TDFA.Pattern ( Text\Regex\TDFA\Pattern.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\Pattern.o )
+[15 of 23] Compiling Text.Regex.TDFA.CorePattern ( Text\Regex\TDFA\CorePattern.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\CorePattern.o )
+[16 of 23] Compiling Text.Regex.TDFA.ReadRegex ( Text\Regex\TDFA\ReadRegex.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\ReadRegex.o )
+[17 of 23] Compiling Text.Regex.TDFA.TNFA ( Text\Regex\TDFA\TNFA.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\TNFA.o )
+[18 of 23] Compiling Text.Regex.TDFA.TDFA ( Text\Regex\TDFA\TDFA.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\TDFA.o )
+[19 of 23] Compiling Text.Regex.TDFA.String ( Text\Regex\TDFA\String.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\String.o )
+[20 of 23] Compiling Text.Regex.TDFA.Sequence ( Text\Regex\TDFA\Sequence.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\Sequence.o )
+[21 of 23] Compiling Text.Regex.TDFA.ByteString.Lazy ( Text\Regex\TDFA\ByteString\Lazy.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\ByteString\Lazy.o )
+[22 of 23] Compiling Text.Regex.TDFA.ByteString ( Text\Regex\TDFA\ByteString.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA\ByteString.o )
+[23 of 23] Compiling Text.Regex.TDFA  ( Text\Regex\TDFA.hs, .stack-work\dist\5c8418a7\build\Text\Regex\TDFA.o )
+Installing library in C:\sr\snapshots\13cecb13\lib\x86_64-windows-ghc-8.2.2\regex-tdfa-1.2.2-DCTOgP33huj6tdQU80QcWB
+Registering library for regex-tdfa-1.2.2..
