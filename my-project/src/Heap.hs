@@ -1,4 +1,5 @@
 module Heap
+--
   ( Heap(EmptyH,Node)
   , clearH
   , emptyHe
@@ -23,7 +24,7 @@ heapSort  :: (Ord a)=>[a]->[a]
 --implementation
 
 data Heap a = EmptyH | Node a [Heap a]
-                  deriving (Show)
+                  deriving (Show, Read)
 
 instance Eq a => Eq (Heap a) where
   (==) (EmptyH) (EmptyH) = True

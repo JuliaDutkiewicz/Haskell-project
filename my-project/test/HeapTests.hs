@@ -10,7 +10,7 @@ import Heap ()
 
 main :: IO ()
 main = do
-  defaultMain (testGroup "Our Heap Tests" [clearHTest, emptyHeTest, isEmptyHHTest1, isEmptyHHTest2, pushHTest, pushHTest2, popHTest, popHTest2, topHTest, topHTest2, heapSortTest ])
+  defaultMain (testGroup "Our Heap Tests" [clearHTest, emptyHeTest, isEmptyHHTest1, isEmptyHHTest2, pushHTest, pushHTest2, popHTest, popHTest2, topHTest, topHTest2, heapSortTest, heapSortTest2 ])
 
 clearHTest :: TestTree
 clearHTest = testCase "Testing clearH"
@@ -56,6 +56,6 @@ heapSortTest :: TestTree
 heapSortTest = testCase "Testing heapSort on [534,123,53,1,4,23,44]"
  (assertEqual "Should write [1,4,23,44,54,123,534]" ([1,4,23,44,53,123,534]) (heapSort [534,123,53,1,4,23,44]) )
 
--- add5Test :: TestTree
--- add5Test = testCase "Testing add5"
---   (assertEqual "Should add 5 to get 10" 10 (add5 5))
+heapSortTest2 :: TestTree
+heapSortTest2 = testCase "Testing heapSort on []"
+  (assertEqual "Should write []" ([]::[Char]) (heapSort ([]::[Char])))
