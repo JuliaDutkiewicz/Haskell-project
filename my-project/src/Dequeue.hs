@@ -1,5 +1,5 @@
 module Dequeue
- ( Dequeue
+ ( Dequeue (Dequeue)
  , emptyDEQ     -- :: Dequeue a
  , isEmptyDEQ   -- :: Dequeue a -> Bool
  , lengthDEQ    -- :: Dequeue a -> Int, O(1)

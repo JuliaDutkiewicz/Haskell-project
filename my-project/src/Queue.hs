@@ -1,5 +1,5 @@
 module Queue
-  ( Queue
+  ( Queue (Queue)
   , emptyQ   -- :: Queue a
   , isEmptyQ -- :: Queue a -> Bool
   , addQ     -- :: a -> Queue a -> Queue a

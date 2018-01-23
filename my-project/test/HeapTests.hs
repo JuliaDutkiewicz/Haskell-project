@@ -5,8 +5,8 @@ module Main where
 import Test.Tasty
 import Test.Tasty.HUnit
 import Heap
-import Heap (Heap(..))
-import Heap ()
+import Queue
+import Dequeue
 
 main :: IO ()
 main = do
