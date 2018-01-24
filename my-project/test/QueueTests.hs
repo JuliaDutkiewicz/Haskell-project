@@ -27,7 +27,7 @@ addQTest1 = testCase "Testing addQ on empty queue"
 addQTest2 :: TestTree
 addQTest2 = testCase "Testing addQ on not empty queue"
   (assertEqual "Should give Queue \"acfdz\"" (Queue "acfdz" ) (addQ 'z' (Queue ['a','c','f','d']) ) )
--- ????????????????????
+
 addQTest3 :: TestTree
 addQTest3 = testCase "Testing addQ on not empty queue 2"
   (assertEqual "Should give Queue [2,1,46,3]" (Queue [2,1,46,3]) (addQ 3 (Queue [2,1,46])))

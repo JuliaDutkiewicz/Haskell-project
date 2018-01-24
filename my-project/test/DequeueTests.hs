@@ -6,7 +6,7 @@ import Dequeue
 
 main :: IO ()
 main = do
-  defaultMain (testGroup "Our Dequeue Tests" [emptyDEQTest, isEmptyDEQTest1, isEmptyDEQTest2, lengthDEQTest1, lengthDEQTest2,lengthDEQTest3, firstDEQTest1, firstDEQTest2, firstDEQTest3, lastDEQTest1,lastDEQTest2,lastDEQTest3])
+   defaultMain (testGroup "Our Dequeue Tests" [emptyDEQTest, isEmptyDEQTest1, isEmptyDEQTest2, lengthDEQTest1, lengthDEQTest2,lengthDEQTest3, firstDEQTest1, firstDEQTest2, firstDEQTest3, lastDEQTest1,lastDEQTest2,lastDEQTest3, pushFrontDEQTest1, pushFrontDEQTest2, pushBackDEQTest1,pushBackDEQTest2, popBackDEQTest1,popBackDEQTest2,popFrontDEQTest1,popFrontDEQTest2,fromListDEQTest1,fromListDEQTest2])
 
 emptyDEQTest :: TestTree
 emptyDEQTest = testCase "Testing emptyDEQ"
@@ -56,13 +56,42 @@ lastDEQTest3 :: TestTree
 lastDEQTest3 = testCase "Testing lastDEQ on Dequeue \"Adeste!\""
   (assertEqual "Should give Just '!'!" (Just '!') (lastDEQ $ Dequeue "Adeste!"))
 
+pushFrontDEQTest1 :: TestTree
+pushFrontDEQTest1 = testCase "Testing pushFrontDEQ on empty 1"
+  (assertEqual "Should give Dequeue [1]" (Dequeue [1]) (pushFrontDEQ (Dequeue [] :: Dequeue Int) 1) )
 
-{-
---takeFrontDEQ:: Int -> Dequeue a -> [a]
---takeBackDEQ :: Int -> Dequeue a -> [a]
-pushFrontDEQ :: Dequeue a -> a -> Dequeue a
-popFrontDEQ :: Dequeue a -> Maybe (a, Dequeue a)
-pushBackDEQ  :: Dequeue a -> a -> Dequeue a
-popBackDEQ  :: Dequeue a -> Maybe (a, Dequeue a)
-fromListDEQ :: [a] -> Dequeue a
--}
+pushFrontDEQTest2 :: TestTree
+pushFrontDEQTest2 = testCase "Testing pushFrontDEQ on Dequeue [1,2,3] 8"
+  (assertEqual "Should give Dequeue [8,1,2,3]" (Dequeue [8,1,2,3]) (pushFrontDEQ (Dequeue [1,2,3]) 8))
+
+popFrontDEQTest1 :: TestTree
+popFrontDEQTest1 = testCase "Testing popFrontDEQ on empty"
+  (assertEqual "Should give Nothing" (Nothing :: Maybe (Int, Dequeue Int)) (popFrontDEQ (Dequeue [] :: Dequeue Int)))
+
+popFrontDEQTest2 :: TestTree
+popFrontDEQTest2 = testCase "Testing popFrontDEQ on Dequeue [4,7,34,2]"
+  (assertEqual "Should give Maybe (4, Dequeue [7,34,2])" (Just (4, Dequeue [7,34,2])) (popFrontDEQ $ Dequeue [4,7,34,2]))
+
+pushBackDEQTest1 :: TestTree
+pushBackDEQTest1 = testCase "Testing pushBackDEQ on empty 1"
+  (assertEqual "Should give Dequeue [1]" (Dequeue [1]) (pushBackDEQ (Dequeue [] :: Dequeue Int) 1) )
+
+pushBackDEQTest2 :: TestTree
+pushBackDEQTest2 = testCase "Testing pushBackDEQ on Dequeue [1,2,3] 8"
+  (assertEqual "Should give Dequeue [1,2,3,8]" (Dequeue [1,2,3,8]) (pushBackDEQ (Dequeue [1,2,3]) 8))
+
+popBackDEQTest1 :: TestTree
+popBackDEQTest1 = testCase "Testing popBackDEQ on empty"
+  (assertEqual "Should give Nothing" (Nothing :: Maybe (Int, Dequeue Int)) (popBackDEQ (Dequeue [] :: Dequeue Int)))
+
+popBackDEQTest2 :: TestTree
+popBackDEQTest2 = testCase "Testing popBackDEQ on Dequeue [4,7,34,2]"
+  (assertEqual "Should give Maybe (2, Dequeue [4,7,34])" (Just (2, Dequeue [4,7,34])) (popBackDEQ $ Dequeue [4,7,34,2]))
+
+fromListDEQTest1 :: TestTree
+fromListDEQTest1 = testCase "Testing fromListDEQ on empty"
+  (assertEqual "Should give Dequeue []" ((Dequeue []) :: Dequeue Char) (fromListDEQ ([] :: [Char])))
+
+fromListDEQTest2 :: TestTree
+fromListDEQTest2 = testCase "Testing fromListDEQ on [1,2,3]"
+  (assertEqual "Should give Dequeue [1,2,3]" (Dequeue [1,2,3]) (fromListDEQ [1,2,3]))
