@@ -62,16 +62,6 @@ lengthDEQ (Dequeue a) = length a
 firstDEQ (Dequeue []) = Nothing
 firstDEQ (Dequeue (a:xa)) =Just a
 
-takeFrontDEQ a (Dequeue as) = loop [] a as
- where loop acc 0 _ =acc
-       loop acc _ []=acc
-       loop acc n (x:xs)= loop ([x]++acc) (n-1) xs
-
-takeBackDEQ a (Dequeue as) = loop [] a as
- where loop acc 0 _ =acc
-       loop acc _ []=acc
-       loop acc n x= loop ([(last x)]++acc) (n-1) (init x)
-
 lastDEQ (Dequeue []) = Nothing
 lastDEQ (Dequeue (a:[])) = Just a
 lastDEQ (Dequeue (a:xs)) = lastDEQ (Dequeue xs)
@@ -86,6 +76,20 @@ pushBackDEQ (Dequeue ax) a = Dequeue (ax++[a])
 popBackDEQ (Dequeue [])= Nothing
 popBackDEQ (Dequeue (a)) = Just (last a, Dequeue (init a))
 
+takeFrontDEQ _ (Dequeue []) = []
+takeFrontDEQ 0 _ = []
+takeFrontDEQ a d = (takeFrontDEQ (a-1) (snd (extractMaybe (popFrontDEQ d))))++ [fst (extractMaybe (popFrontDEQ d))]
+
+
+
+takeBackDEQ _ (Dequeue []) = []
+takeBackDEQ 0 _ = []
+takeBackDEQ a d = (takeBackDEQ (a-1) (snd (extractMaybe (popBackDEQ d))))++ [fst (extractMaybe (popBackDEQ d))]
+
 
 fromListDEQ []= emptyDEQ
 fromListDEQ  (a:ax)= pushFrontDEQ (fromListDEQ ax) a
+
+extractMaybe :: Maybe a -> a
+extractMaybe Nothing  = error "Nothing inside!"
+extractMaybe (Just a) = a
