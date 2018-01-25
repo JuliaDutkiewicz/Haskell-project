@@ -8,7 +8,7 @@
 @version 0.1.0.0
 
 
--- | This is a module that implements a dequeue and it's utilities.
+-- | This is a modulte that is implementing a dequeue and it's utilities.
 module Dequeue
 
 -- | Type that represents a dequeue.
@@ -46,8 +46,8 @@ takeBackDEQ :: Int -> Dequeue a -> [a]
 pushFrontDEQ :: Dequeue a -> a -> Dequeue a
 
 -- | Function that takes a dequeue and returns a <tt>Just</tt> pair of the
---   first element and the dequeue without the popped element, if dequeue
---   is empty it returns <tt>Nothing</tt>.
+--   first element and the dequeue without the element, if dequeue is empty
+--   it returns <tt>Nothing</tt>.
 popFrontDEQ :: Dequeue a -> Maybe (a, Dequeue a)
 
 -- | Function that takes a dequeue and an element and adds it at the end of
@@ -55,8 +55,8 @@ popFrontDEQ :: Dequeue a -> Maybe (a, Dequeue a)
 pushBackDEQ :: Dequeue a -> a -> Dequeue a
 
 -- | Function that takes a dequeue and returns a <tt>Just</tt> pair of the
---   last element and the dequeue without the popped element, if dequeue is
---   empty it returns <tt>Nothing</tt>.
+--   last element and the dequeue without the element, if dequeue is empty
+--   it returns <tt>Nothing</tt>.
 popBackDEQ :: Dequeue a -> Maybe (a, Dequeue a)
 
 -- | Function that takes a list and returns a dequeue made out of that
@@ -66,7 +66,8 @@ instance GHC.Show.Show a => GHC.Show.Show (Dequeue.Dequeue a)
 instance GHC.Classes.Eq a => GHC.Classes.Eq (Dequeue.Dequeue a)
 
 
--- | This is a module that implements a pairing heap and it's utilities.
+-- | This is a modulte that is implementing a pairing heap and it's
+--   utilities.
 module Heap
 
 -- | Type that represents a Heap, it can be Empty, or it can have node that
@@ -98,7 +99,7 @@ popH :: (Ord a) => Heap a -> Maybe (a, Heap a)
 --   is on the top of the heap (the smallest element).
 topH :: Heap a -> Maybe a
 
--- | Function that takes an array and returns a soted array made out of
+-- | Function that takes an array and returns a sotred array made out of
 --   elements of taken array. It uses heap to sort the array.
 heapSort :: (Ord a) => [a] -> [a]
 
@@ -113,8 +114,12 @@ instance GHC.Read.Read a => GHC.Read.Read (Heap.Heap a)
 instance GHC.Show.Show a => GHC.Show.Show (Heap.Heap a)
 instance GHC.Classes.Eq a => GHC.Classes.Eq (Heap.Heap a)
 
+module Lib
+someFunc :: IO ()
+sayYo :: String -> String
 
--- | This is a module that implements a queue and it's utilities.
+
+-- | This is a modulte that is implementing a queue and it's utilities.
 module Queue
 
 -- | Type that represents a queue.
@@ -132,8 +137,16 @@ isEmptyQ :: Queue a -> Bool
 addQ :: a -> Queue a -> Queue a
 
 -- | Function that takes a queue a returns <tt>Just</tt> pair of the first
---   element and the queue without this element, If queue is empty it
+--   element and the queue without htis element, If queue is empty it
 --   returns <tt>Nothing</tt>.
 remQ :: Queue a -> Maybe (a, Queue a)
 instance GHC.Show.Show a => GHC.Show.Show (Queue.Queue a)
 instance GHC.Classes.Eq a => GHC.Classes.Eq (Queue.Queue a)
+
+module Stack
+data Stack a
+empty :: Stack a
+isEmpty :: Stack a -> Bool
+push :: a -> Stack a -> Stack a
+top :: Stack a -> a
+pop :: Stack a -> (a, Stack a)
