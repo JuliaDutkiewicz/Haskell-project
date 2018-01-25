@@ -38,11 +38,11 @@ pushHTest2 = testCase "Testing pushH on Node 2 []"
 
 popHTest :: TestTree
 popHTest = testCase "Testing popH on Empty"
-  (assertEqual "Should write (Nothing, EmptyH)" (((Nothing :: Maybe Char), (EmptyH :: Heap Char))) (popH (EmptyH :: Heap Char)))
+  (assertEqual "Should write (Nothing, EmptyH)" (Nothing :: Maybe (Char, Heap Char)) (popH (EmptyH :: Heap Char)))
 
 popHTest2 :: TestTree
 popHTest2 = testCase "Testing popH on Node 2 [Node 3 [], Node 5[Node 7 []]]"
-  (assertEqual "Should write (Nothing, EmptyH)" ((Just 2, Node 3 [Node 5[Node 7[]]])) (popH (Node 2 [Node 3 [], Node 5[Node 7 []]])))
+  (assertEqual "Should write (Nothing, EmptyH)" (Just (2, Node 3 [Node 5[Node 7[]]])) (popH (Node 2 [Node 3 [], Node 5[Node 7 []]])))
 
 topHTest :: TestTree
 topHTest = testCase "Testing topH on Empty"

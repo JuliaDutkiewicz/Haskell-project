@@ -1,6 +1,6 @@
 {-|
 Module      : Queue
-This is a modulte that is implementing a queue and it's utilities.
+This is a module that implements a queue and it's utilities.
 -}
 module Queue
   ( Queue (Queue)
@@ -17,7 +17,7 @@ emptyQ :: Queue a
 isEmptyQ :: Queue a -> Bool
 -- |Function that takes an element and adds it to the queue.
 addQ :: a -> Queue a -> Queue a
--- |Function that takes a queue a returns @Just@ pair of the first element and the queue without htis element, If queue is empty it returns @Nothing@.
+-- |Function that takes a queue a returns @Just@ pair of the first element and the queue without this element, If queue is empty it returns @Nothing@.
 remQ :: Queue a -> Maybe ( a, Queue a)
 
 --implementation

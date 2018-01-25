@@ -1,17 +1,15 @@
 module Main where
 
-import Lib
 import Heap
 import Queue
 import Dequeue
-import Stack
 
 
 main :: IO ()
 main = do
   putStrLn "What's your name?"
   name <- getLine
-  print (sayYo name)
+  print ("Hello " ++ name ++"!")
   print (heapSort [1,345,2,325,24,4])
   print $ isEmptyHH emptyHe
   print $ isEmptyHH (makeHeapFromArray ([]::[Int]))

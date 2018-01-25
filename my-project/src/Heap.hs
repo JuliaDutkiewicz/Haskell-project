@@ -1,6 +1,6 @@
 {-|
 Module      : Heap
-This is a modulte that is implementing a pairing heap and it's utilities.
+This is a module that implements a pairing heap and it's utilities.
 -}
 module Heap
 --
@@ -29,7 +29,7 @@ pushH     :: (Ord a)=>a -> Heap a -> Heap a
 popH      :: (Ord a)=>Heap a -> Maybe (a, Heap a)
 -- |Function that takes a reap and returns @Just@ the element that is on the top of the heap (the smallest element).
 topH      :: Heap a -> Maybe a
--- |Function that takes an array and returns a sotred array made out of elements of taken array. It uses heap to sort the array.
+-- |Function that takes an array and returns a soted array made out of elements of taken array. It uses heap to sort the array.
 heapSort  :: (Ord a)=>[a]->[a]
 -- |Function that takes an array and returns heap made out of the elements of taken array.
 makeHeapFromArray :: (Ord a)=> [a]-> Heap a
@@ -92,3 +92,4 @@ heapSort a=makeArrayFromHeap(makeHeapFromArray a)
 
 extractMaybe :: Maybe a -> a
 extractMaybe Nothing  = error "Nothing inside!"
+extractMaybe (Just a) = a

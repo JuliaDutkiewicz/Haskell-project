@@ -1,6 +1,6 @@
 {-|
 Module      : Dequeue
-This is a modulte that is implementing a dequeue and it's utilities.
+This is a module that implements a dequeue and it's utilities.
 -}
 module Dequeue
  ( Dequeue (Dequeue)
@@ -34,11 +34,11 @@ takeFrontDEQ:: Int -> Dequeue a -> [a]
 takeBackDEQ :: Int -> Dequeue a -> [a]
 -- |Function that takes a dequeue and an element and adds it at the beginning of the dequeue.
 pushFrontDEQ :: Dequeue a -> a -> Dequeue a
--- |Function that takes a dequeue and returns a @Just@ pair of the first element and the dequeue without the element, if dequeue is empty it returns @Nothing@.
+-- |Function that takes a dequeue and returns a @Just@ pair of the first element and the dequeue without the popped element, if dequeue is empty it returns @Nothing@.
 popFrontDEQ :: Dequeue a -> Maybe (a, Dequeue a)
 -- |Function that takes a dequeue and an element and adds it at the end of the dequeue.
 pushBackDEQ  :: Dequeue a -> a -> Dequeue a
--- |Function that takes a dequeue and returns a @Just@ pair of the last element and the dequeue without the element, if dequeue is empty it returns @Nothing@.
+-- |Function that takes a dequeue and returns a @Just@ pair of the last element and the dequeue without the popped element, if dequeue is empty it returns @Nothing@.
 popBackDEQ  :: Dequeue a -> Maybe (a, Dequeue a)
 -- |Function that takes a list and returns a dequeue made out of that list.
 fromListDEQ :: [a] -> Dequeue a
@@ -85,8 +85,7 @@ pushBackDEQ (Dequeue ax) a = Dequeue (ax++[a])
 
 popBackDEQ (Dequeue [])= Nothing
 popBackDEQ (Dequeue (a:[])) = Just (a, emptyDEQ)
-
-
+--????????????
 
 fromListDEQ []= emptyDEQ
 fromListDEQ  (a:ax)= pushFrontDEQ (fromListDEQ ax) a
