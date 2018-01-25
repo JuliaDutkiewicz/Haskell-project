@@ -85,7 +85,9 @@ pushBackDEQ (Dequeue ax) a = Dequeue (ax++[a])
 
 popBackDEQ (Dequeue [])= Nothing
 popBackDEQ (Dequeue (a:[])) = Just (a, emptyDEQ)
--- ????????????
+popBackDEQ (Dequeue (a)) = Just (last a, Dequeue (init a))
+
+
 
 fromListDEQ []= emptyDEQ
 fromListDEQ  (a:ax)= pushFrontDEQ (fromListDEQ ax) a
