@@ -60,6 +60,7 @@ test-suite my-project-test
       base >=4.7 && <5
     , tasty
     , tasty-hunit
+    , QuickCheck
     , my-project
   other-modules:
       Paths_my_project
