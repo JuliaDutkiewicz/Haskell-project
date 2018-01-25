@@ -6,7 +6,7 @@ import Dequeue
 
 main :: IO ()
 main = do
-   defaultMain (testGroup "Our Dequeue Tests" [emptyDEQTest, isEmptyDEQTest1, isEmptyDEQTest2, lengthDEQTest1, lengthDEQTest2,lengthDEQTest3, firstDEQTest1, firstDEQTest2, firstDEQTest3, lastDEQTest1,lastDEQTest2,lastDEQTest3, pushFrontDEQTest1, pushFrontDEQTest2, pushBackDEQTest1,pushBackDEQTest2, popBackDEQTest1,popBackDEQTest2,popFrontDEQTest1,popFrontDEQTest2,fromListDEQTest1,fromListDEQTest2])
+   defaultMain (testGroup "Our Dequeue Tests" [emptyDEQTest, isEmptyDEQTest1, isEmptyDEQTest2, lengthDEQTest1, lengthDEQTest2,lengthDEQTest3, firstDEQTest1, firstDEQTest2, firstDEQTest3, lastDEQTest1,lastDEQTest2,lastDEQTest3, pushFrontDEQTest1, pushFrontDEQTest2, pushBackDEQTest1,pushBackDEQTest2, popBackDEQTest1,popBackDEQTest2,popFrontDEQTest1,popFrontDEQTest2,fromListDEQTest1,fromListDEQTest2,takeFrontDEQTest1,takeFrontDEQTest2,takeFrontDEQTest3, takeBackDEQTest1,takeBackDEQTest2, takeBackDEQTest3])
 
 emptyDEQTest :: TestTree
 emptyDEQTest = testCase "Testing emptyDEQ"
@@ -95,3 +95,27 @@ fromListDEQTest1 = testCase "Testing fromListDEQ on empty"
 fromListDEQTest2 :: TestTree
 fromListDEQTest2 = testCase "Testing fromListDEQ on [1,2,3]"
   (assertEqual "Should give Dequeue [1,2,3]" (Dequeue [1,2,3]) (fromListDEQ [1,2,3]))
+
+takeFrontDEQTest1 :: TestTree
+takeFrontDEQTest1 = testCase "Testing takeFrontDEQ on empty"
+  (assertEqual "Should give []" ([] :: [Int]) (takeFrontDEQ 5 ((Dequeue []):: Dequeue Int)))
+
+takeFrontDEQTest2 :: TestTree
+takeFrontDEQTest2 = testCase "Testing takeFrontDEQ on 3 and Dequeue [2,4,6,8,0]"
+  (assertEqual "Should give [6,4,2]" [6,4,2] (takeFrontDEQ 3 $ Dequeue [2,4,6,8,0]))
+
+takeFrontDEQTest3 :: TestTree
+takeFrontDEQTest3 = testCase "Testing takeFrontDEQ on 10 and Dequeue [2,4,6,8,0]"
+  (assertEqual "Should give [0,8,6,4,2]" [0,8,6,4,2] (takeFrontDEQ 10 $ Dequeue [2,4,6,8,0] ))
+
+takeBackDEQTest1 :: TestTree
+takeBackDEQTest1 = testCase "Testing takeBackDEQ on empty"
+  (assertEqual "Should give []" ([] :: [Int]) (takeBackDEQ 5 ((Dequeue []):: Dequeue Int)))
+
+takeBackDEQTest2 :: TestTree
+takeBackDEQTest2 = testCase "Testing takeBackDEQ on 3 and Dequeue [2,4,6,8,0]"
+  (assertEqual "Should give [6,8,0]" [6,8,0] (takeBackDEQ 3 $ Dequeue [2,4,6,8,0]))
+
+takeBackDEQTest3 :: TestTree
+takeBackDEQTest3 = testCase "Testing takeBackDEQ on 10 and Dequeue [2,4,6,8,0]"
+  (assertEqual "Should give [2,4,6,8,0]" [2,4,6,8,0] (takeBackDEQ 10 $ Dequeue [2,4,6,8,0] ))

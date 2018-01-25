@@ -135,5 +135,13 @@ addQ :: a -> Queue a -> Queue a
 --   element and the queue without this element, If queue is empty it
 --   returns <tt>Nothing</tt>.
 remQ :: Queue a -> Maybe (a, Queue a)
+
+-- | Function that takes a number n and returns an array of first n
+--   elements in order they would be removed. If queue's length is smaller
+--   then n, it returns array made out of all elements of the queue.
+takeFrontQ :: Int -> Queue a -> [a]
+
+-- | Function that takes a list and returns a queue made out of that list.
+fromListQ :: [a] -> Queue a
 instance GHC.Show.Show a => GHC.Show.Show (Queue.Queue a)
 instance GHC.Classes.Eq a => GHC.Classes.Eq (Queue.Queue a)

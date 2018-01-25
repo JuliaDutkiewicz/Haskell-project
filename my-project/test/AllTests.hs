@@ -25,10 +25,10 @@ tests :: TestTree
 tests = testGroup "Tests" [queueTests, dequeueTests, heapTests]
 
 queueTests :: TestTree
-queueTests = testGroup "Our Queue Tests" [emptyQTest, isEmptyQTest1, isEmptyQTest2, addQTest1, addQTest2, addQTest3, remQTest1, remQTest2]
+queueTests = testGroup "Our Queue Tests" [emptyQTest, isEmptyQTest1, isEmptyQTest2, addQTest1, addQTest2, addQTest3, remQTest1, remQTest2, takeFrontQTest1, takeFrontQTest2, takeFrontQTest3]
 
 dequeueTests :: TestTree
-dequeueTests = testGroup "Our Dequeue Tests" [emptyDEQTest, isEmptyDEQTest1, isEmptyDEQTest2, lengthDEQTest1, lengthDEQTest2,lengthDEQTest3, firstDEQTest1, firstDEQTest2, firstDEQTest3, lastDEQTest1,lastDEQTest2,lastDEQTest3, pushFrontDEQTest1, pushFrontDEQTest2, pushBackDEQTest1,pushBackDEQTest2, popBackDEQTest1,popBackDEQTest2,popFrontDEQTest1,popFrontDEQTest2,fromListDEQTest1,fromListDEQTest2]
+dequeueTests = testGroup "Our Dequeue Tests" [emptyDEQTest, isEmptyDEQTest1, isEmptyDEQTest2, lengthDEQTest1, lengthDEQTest2,lengthDEQTest3, firstDEQTest1, firstDEQTest2, firstDEQTest3, lastDEQTest1,lastDEQTest2,lastDEQTest3, pushFrontDEQTest1, pushFrontDEQTest2, pushBackDEQTest1,pushBackDEQTest2, popBackDEQTest1,popBackDEQTest2,popFrontDEQTest1,popFrontDEQTest2,fromListDEQTest1,fromListDEQTest2,takeFrontDEQTest1,takeFrontDEQTest2,takeFrontDEQTest3, takeBackDEQTest1,takeBackDEQTest2, takeBackDEQTest3]
 
 heapTests :: TestTree
 heapTests = testGroup "Our Heap Tests" [clearHTest, emptyHeTest, isEmptyHHTest1, isEmptyHHTest2, pushHTest, pushHTest2, popHTest, popHTest2, topHTest, topHTest2, heapSortTest, heapSortTest2 ]
@@ -68,6 +68,18 @@ remQTest1 = testCase "Testing remQ on empty queue"
 remQTest2 :: TestTree
 remQTest2 = testCase "Testing remQ on not empty queue"
   (assertEqual "Should give Just (1, Queue [2,3])" (Just (1, Queue [2,3])) (remQ (Queue [1,2,3])))
+
+takeFrontQTest1 :: TestTree
+takeFrontQTest1 = testCase "Testing takeFrontQ on empty"
+  (assertEqual "Should give []" ([] :: [Int]) (takeFrontQ 5 (Queue [] :: Queue Int)))
+
+takeFrontQTest2 :: TestTree
+takeFrontQTest2 = testCase "Testing takeFrontQ on 3 and Queue [1,3,5,7,9]"
+  (assertEqual "Should give [5,3,1]" [5,3,1] (takeFrontQ 3 $ Queue [1,3,5,7,9]))
+
+takeFrontQTest3 :: TestTree
+takeFrontQTest3 = testCase "Testing takeFrontQ on 6 and Queue [1,3,5,7,9]"
+  (assertEqual "Should give [9,7,5,3,1]" [9,7,5,3,1] (takeFrontQ 6 $ Queue [1,3,5,7,9]))
 
 --
 -- dequeueTests
@@ -160,6 +172,30 @@ fromListDEQTest1 = testCase "Testing fromListDEQ on empty"
 fromListDEQTest2 :: TestTree
 fromListDEQTest2 = testCase "Testing fromListDEQ on [1,2,3]"
   (assertEqual "Should give Dequeue [1,2,3]" (Dequeue [1,2,3]) (fromListDEQ [1,2,3]))
+
+takeFrontDEQTest1 :: TestTree
+takeFrontDEQTest1 = testCase "Testing takeFrontDEQ on empty"
+  (assertEqual "Should give []" ([] :: [Int]) (takeFrontDEQ 5 ((Dequeue []):: Dequeue Int)))
+
+takeFrontDEQTest2 :: TestTree
+takeFrontDEQTest2 = testCase "Testing takeFrontDEQ on 3 and Dequeue [2,4,6,8,0]"
+  (assertEqual "Should give [6,4,2]" [6,4,2] (takeFrontDEQ 3 $ Dequeue [2,4,6,8,0]))
+
+takeFrontDEQTest3 :: TestTree
+takeFrontDEQTest3 = testCase "Testing takeFrontDEQ on 10 and Dequeue [2,4,6,8,0]"
+  (assertEqual "Should give [0,8,6,4,2]" [0,8,6,4,2] (takeFrontDEQ 10 $ Dequeue [2,4,6,8,0] ))
+
+takeBackDEQTest1 :: TestTree
+takeBackDEQTest1 = testCase "Testing takeBackDEQ on empty"
+  (assertEqual "Should give []" ([] :: [Int]) (takeBackDEQ 5 ((Dequeue []):: Dequeue Int)))
+
+takeBackDEQTest2 :: TestTree
+takeBackDEQTest2 = testCase "Testing takeBackDEQ on 3 and Dequeue [2,4,6,8,0]"
+  (assertEqual "Should give [6,8,0]" [6,8,0] (takeBackDEQ 3 $ Dequeue [2,4,6,8,0]))
+
+takeBackDEQTest3 :: TestTree
+takeBackDEQTest3 = testCase "Testing takeBackDEQ on 10 and Dequeue [2,4,6,8,0]"
+  (assertEqual "Should give [2,4,6,8,0]" [2,4,6,8,0] (takeBackDEQ 10 $ Dequeue [2,4,6,8,0] ))
 
 --
 -- heapTests

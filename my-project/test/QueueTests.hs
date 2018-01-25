@@ -6,7 +6,7 @@ import Queue
 
 main :: IO ()
 main = do
-  defaultMain (testGroup "Our Queue Tests" [emptyQTest, isEmptyQTest1, isEmptyQTest2, addQTest1, addQTest2, addQTest3, remQTest1, remQTest2])
+  defaultMain (testGroup "Our Queue Tests" [emptyQTest, isEmptyQTest1, isEmptyQTest2, addQTest1, addQTest2, addQTest3, remQTest1, remQTest2, takeFrontQTest1, takeFrontQTest2, takeFrontQTest3])
 
 emptyQTest :: TestTree
 emptyQTest = testCase "Testing emptyQ"
@@ -39,3 +39,15 @@ remQTest1 = testCase "Testing remQ on empty queue"
 remQTest2 :: TestTree
 remQTest2 = testCase "Testing remQ on not empty queue"
   (assertEqual "Should give Just (1, Queue [2,3])" (Just (1, Queue [2,3])) (remQ (Queue [1,2,3])))
+
+takeFrontQTest1 :: TestTree
+takeFrontQTest1 = testCase "Testing takeFrontQ on empty"
+  (assertEqual "Should give []" ([] :: [Int]) (takeFrontQ 5 (Queue [] :: Queue Int)))
+
+takeFrontQTest2 :: TestTree
+takeFrontQTest2 = testCase "Testing takeFrontQ on 3 and Queue [1,3,5,7,9]"
+  (assertEqual "Should give [5,3,1]" [5,3,1] (takeFrontQ 3 $ Queue [1,3,5,7,9]))
+
+takeFrontQTest3 :: TestTree
+takeFrontQTest3 = testCase "Testing takeFrontQ on 6 and Queue [1,3,5,7,9]"
+  (assertEqual "Should give [9,7,5,3,1]" [9,7,5,3,1] (takeFrontQ 6 $ Queue [1,3,5,7,9]))

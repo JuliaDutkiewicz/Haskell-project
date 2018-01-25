@@ -81,13 +81,9 @@ takeFrontDEQ _ (Dequeue []) = []
 takeFrontDEQ 0 _ = []
 takeFrontDEQ a d = (takeFrontDEQ (a-1) (snd (extractMaybe (popFrontDEQ d))))++ [fst (extractMaybe (popFrontDEQ d))]
 
-
-
 takeBackDEQ _ (Dequeue []) = []
 takeBackDEQ 0 _ = []
 takeBackDEQ a d = (takeBackDEQ (a-1) (snd (extractMaybe (popBackDEQ d))))++ [fst (extractMaybe (popBackDEQ d))]
-
-
 
 fromListDEQ []= emptyDEQ
 fromListDEQ  (a:ax)= pushFrontDEQ (fromListDEQ ax) a
