@@ -54,6 +54,7 @@ takeFrontQ a d = (takeFrontQ (a-1) (snd (extractMaybe (remQ d))))++ [fst (extrac
 fromListQ []= emptyQ
 fromListQ  a= addQ (last a) (fromListQ (init a))
 
+-- function taken from lab 6
 extractMaybe :: Maybe a -> a
 extractMaybe Nothing  = error "Nothing inside!"
 extractMaybe (Just a) = a

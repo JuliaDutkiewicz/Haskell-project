@@ -78,11 +78,9 @@ merge (x:[]) = x
 merge (x:y:[]) = pairMerge x y
 merge (x:y:z) = pairMerge (pairMerge x y) (merge z)
 
-
 makeHeapFromArray []=EmptyH
 makeHeapFromArray (a:[]) =pushH a EmptyH
 makeHeapFromArray (a:as) = pushH a (makeHeapFromArray as)
-
 
 makeArrayFromHeap EmptyH = []
 makeArrayFromHeap a = fst(extractMaybe(popH a)): makeArrayFromHeap(snd (extractMaybe(popH a)))
@@ -90,6 +88,7 @@ makeArrayFromHeap a = fst(extractMaybe(popH a)): makeArrayFromHeap(snd (extractM
 heapSort [] = []
 heapSort a=makeArrayFromHeap(makeHeapFromArray a)
 
+-- function taken from lab 6
 extractMaybe :: Maybe a -> a
 extractMaybe Nothing  = error "Nothing inside!"
 extractMaybe (Just a) = a

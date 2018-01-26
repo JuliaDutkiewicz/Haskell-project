@@ -88,6 +88,7 @@ takeBackDEQ a d = (takeBackDEQ (a-1) (snd (extractMaybe (popBackDEQ d))))++ [fst
 fromListDEQ []= emptyDEQ
 fromListDEQ  (a:ax)= pushFrontDEQ (fromListDEQ ax) a
 
+-- function taken from lab 6
 extractMaybe :: Maybe a -> a
 extractMaybe Nothing  = error "Nothing inside!"
 extractMaybe (Just a) = a
